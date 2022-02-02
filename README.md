@@ -29,3 +29,14 @@ These rules are aimed at standardizing the development of components using React
 
 ### 1.5 Entry point (required)
 - MUST export primary component.
+
+``` js
+import ComponentName from './ComponentName';
+export default ComponentName
+```
+
+### 1.6 Fragments (optional)
+Fragment component using in primary component.
+
+### 1.7 Readme (required)
+Component documentation 
