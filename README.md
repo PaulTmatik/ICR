@@ -28,7 +28,7 @@ These rules are aimed at standardizing the development of components using React
 ### 1.4 Typing module (required)
 
 ### 1.5 Entry point (required)
-- MUST export primary component. It's allow use short path in imports of component.
+- MUST export primary component. It's allow use shortest path in imports of component.
 - DO NOT implement component in this file. If you work with different components, it will be difficult to understand where which one is.
 
 ``` js
@@ -41,3 +41,27 @@ Fragment component using in primary component.
 
 ### 1.7 Readme (required)
 Component documentation 
+
+## 2. Importing modules
+
+Order of import:
+1. Node modules imports
+2. Project utilites imports
+3. Project components imports
+4. Styles imports
+
+`TaskTable.jsx`
+``` js
+import PropTypes from 'prop-types'; ................. 1
+import { format } from 'date-fns'; .................. 1
+
+import { convertToLocaleFloat } from '../../utils'; . 2
+
+import Button from '../Button'; ..................... 3
+import Calendar from '../Calendar'; ................. 3
+
+import './TaskTable.css'; ........................... 4
+import taskTableSyle from './TaskTable.module.css'; . 4
+
+function TaskTable({ className }) { ... }
+```
