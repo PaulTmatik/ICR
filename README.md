@@ -28,11 +28,12 @@ These rules are aimed at standardizing the development of components using React
 ### 1.4 Typing module (required)
 
 ### 1.5 Entry point (required)
-- MUST export primary component.
+- MUST export primary component. It's allow use short path in imports of component.
+- DO NOT implement component in this file. If you work with different components, it will be difficult to understand where which one is.
 
 ``` js
 import ComponentName from './ComponentName';
-export default ComponentName
+export default ComponentName;
 ```
 
 ### 1.6 Fragments (optional)
