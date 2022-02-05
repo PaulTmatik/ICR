@@ -65,3 +65,30 @@ import taskTableSyle from './TaskTable.module.css'; . 4
 
 function TaskTable({ className }) { ... }
 ```
+
+## 3. Component implementation
+
+- Primary component MUST have root semantic tag wrapper.
+- The `className` props MUST be present and added to wrapper `className`
+
+``` jsx
+function Switcher({ className, ... }) {
+    return (
+        <label className={['switcher', className].join(' ')} ... >
+            ... // component body
+        </label>
+    );
+}
+```
+- If component get data from remote server, endpoint path MUST be passed from props.
+- Also all data MUST be mapped by Data Adapter.
+
+``` jsx
+<User src="https://api-host.org/api/queries/get_user" adapter={userDataAdapter} />
+
+async function User({ className, src, adapter = () => {} }) {
+    const userEndpointResponse = await fetch(src);
+    const user = adapter(await userEndpointResponse.json());
+    ...
+}
+```
