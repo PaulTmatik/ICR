@@ -80,7 +80,7 @@ function Switcher({ className, ... }) {
     );
 }
 ```
-- If component get data from remote server, endpoint path MUST be passed from props.
+- If component get data from remote server, endpoint path MUST be passed from props, connection config MUST be passed from props.
 - Also all data MUST be mapped by Data Adapter.
 
 ``` jsx
