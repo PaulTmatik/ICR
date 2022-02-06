@@ -88,7 +88,7 @@ function Switcher({ className, ... }) {
 ``` jsx
 <User src="https://api-host.org/api/queries/get_user" adapter={userDataAdapter} />
 
-async function User({ className, src, adapter = () => {} }) {
+async function User({ className, src, adapter = (originData) => originData }) {
     const userEndpointResponse = await fetch(src);
     const user = adapter(await userEndpointResponse.json());
     ...
