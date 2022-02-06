@@ -74,7 +74,7 @@ function TaskTable({ className }) { ... }
 ``` jsx
 function Switcher({ className, ... }) {
     return (
-        <label className={['switcher', className].join(' ')} ... >
+        <label className={`switcher ${className}`.trim()} ... >
             ... // component body
         </label>
     );
@@ -92,5 +92,49 @@ async function User({ className, src, adapter = (originData) => originData }) {
     const userEndpointResponse = await fetch(src);
     const user = adapter(await userEndpointResponse.json());
     ...
+}
+```
+
+## 4. Complex component styles
+
+Use CSS Custom Properties for styling all elements of component.
+``` jsx
+...
+return (
+    <label className={`switcher ${className}`.trim()} ... >
+        <input type="checkbox" className="switcher__input" />
+        <div className="switcher__marker" />
+    </label>
+)
+```
+
+``` css
+.switcher {
+    --background-color: #eee;
+    --background-color-active: #4f8;
+    --marker-background-color: white;
+    --marker-background-color-active: yellow;
+}
+
+.switcher__marker {
+    background-color: var(--background-color);
+    ...
+}
+
+:checked + .switcher__marker {
+    background-color: var(--background-color-active);
+}
+```
+**How it work?**
+
+If need change component style add new class to component, then change custom property.
+``` jsx
+<Switcher className="new-cool-style" ... />
+```
+
+``` css
+.new-cool-style {
+    --background-color: red;
+    --background-color-active: blue;
 }
 ```
